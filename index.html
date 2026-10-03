@@ -1,74 +1,285 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Crack the Safe — Weekly Live Draw</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crack the Safe — Autumn Weekly Live Draw</title>
+
 <style>
-:root{--cream:#fff7e6;--brown:#5b321f;--orange:#c96b2c;--gold:#e0a12f;--red:#8f2f22;--card:#fffdf7}
-*{box-sizing:border-box}
-body{margin:0;background:linear-gradient(#fff8e9,#f3dfba);color:var(--brown);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-.wrap{max-width:900px;margin:auto;padding:22px 16px 40px}
-header{text-align:center;margin-bottom:18px}
-.leaves{font-size:34px}
-h1{margin:4px 0 2px;font-size:clamp(32px,7vw,58px);letter-spacing:1px}
-.sub{font-weight:800;color:#80513a}
-.safe{background:var(--card);border:3px solid #d5a25e;border-radius:24px;padding:18px;box-shadow:0 8px 28px #6f3e1f24}
-.roll{margin:16px 0 22px}
-.roll-title{font-size:20px;font-weight:900;margin:0 0 8px}
-.nums{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
-.num{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#3b302a;color:#fff7df;border:4px solid #c58b3d;border-radius:16px;font-weight:950;font-size:clamp(28px,8vw,58px);font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 2px #6d4b2f}
-.spin{animation:tick .11s ease-in-out infinite alternate}
-@keyframes tick{from{transform:translateY(-3px);opacity:.55}to{transform:translateY(3px);opacity:1}}
-button{width:100%;min-height:64px;border:0;border-radius:18px;background:linear-gradient(#d77935,#a84423);color:white;font-size:clamp(20px,5vw,30px);font-weight:950;letter-spacing:.5px;box-shadow:0 5px 0 #71301c;cursor:pointer}
-button:active{transform:translateY(3px);box-shadow:0 2px 0 #71301c}
-button:disabled{opacity:.75}
-.result{margin-top:18px;text-align:center;background:#fff0cf;border:2px solid #ddb66f;border-radius:16px;padding:14px;font-weight:900;font-size:20px;display:none}
-.note{text-align:center;font-size:14px;margin-top:14px;color:#79533e}
-@media(max-width:390px){.safe{padding:12px}.nums{gap:5px}.num{border-width:3px;border-radius:11px}}
-@media(prefers-reduced-motion:reduce){.spin{animation:none}}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #5b321f;
+  background: linear-gradient(#fff8e9, #f7d99b);
+}
+
+.wrap {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 18px 45px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.leaves {
+  font-size: 34px;
+}
+
+h1 {
+  margin: 5px 0;
+  font-size: clamp(38px, 7vw, 64px);
+  letter-spacing: 1px;
+}
+
+.sub {
+  font-weight: 800;
+  font-size: 18px;
+  color: #80513a;
+}
+
+.safe {
+  background: #fffdf8;
+  border: 3px solid #d59b45;
+  border-radius: 25px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(91,50,31,.15);
+}
+
+.set {
+  margin: 17px 0 25px;
+}
+
+.set-title {
+  font-size: 21px;
+  font-weight: 900;
+  margin-bottom: 9px;
+}
+
+.nums {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.num {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3b302b;
+  color: #fff7dc;
+  border: 4px solid #c88a32;
+  border-radius: 16px;
+  font-size: clamp(28px, 6vw, 48px);
+  font-weight: 900;
+  box-shadow: inset 0 0 0 2px #6b4930;
+}
+
+.num.spinning {
+  animation: shake .10s ease-in-out infinite alternate;
+}
+
+@keyframes shake {
+  from { transform: translateY(-3px); }
+  to { transform: translateY(3px); }
+}
+
+button {
+  width: 100%;
+  min-height: 72px;
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(#e77725, #ae391b);
+  color: white;
+  font-size: clamp(24px, 5vw, 35px);
+  font-weight: 900;
+  box-shadow: 0 6px 0 #78301c;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #78301c;
+}
+
+button:disabled {
+  opacity: .75;
+}
+
+.result {
+  margin-top: 22px;
+  padding: 17px;
+  text-align: center;
+  background: #fff1c7;
+  border: 2px solid #d6a24b;
+  border-radius: 17px;
+  font-weight: 900;
+  font-size: 19px;
+}
+
+.small {
+  display: block;
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.note {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #79533e;
+}
+
+@media (max-width: 500px) {
+  .safe { padding: 13px; }
+  .nums { gap: 5px; }
+  .num { border-width: 3px; border-radius: 11px; }
+}
 </style>
 </head>
+
 <body>
+
 <main class="wrap">
+
 <header>
-<div class="leaves">🍂 🔐 🍁</div>
-<h1>CRACK THE SAFE</h1>
-<div class="sub">WEEKLY LIVE DRAW • NUMBERS 1–50</div>
+  <div class="leaves">🍂 🔐 🍁</div>
+  <h1>CRACK THE SAFE</h1>
+  <div class="sub">AUTUMN WEEKLY LIVE DRAW • NUMBERS 1–50</div>
 </header>
+
 <section class="safe">
-<div id="rolls"></div>
-<button id="spin" type="button">🔐 SPIN THE SAFE 🔐</button>
-<div id="result" class="result" aria-live="assertive"></div>
+
+  <div id="sets">
+    <div class="set">
+      <div class="set-title">🔐 SET 1</div>
+      <div class="nums">
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+      </div>
+    </div>
+
+    <div class="set">
+      <div class="set-title">🔐 SET 2</div>
+      <div class="nums">
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+      </div>
+    </div>
+
+    <div class="set">
+      <div class="set-title">🔐 SET 3</div>
+      <div class="nums">
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+        <div class="num">--</div>
+      </div>
+    </div>
+  </div>
+
+  <button id="spinButton" type="button">
+    🔐 SPIN THE LOCK 🔐
+  </button>
+
+  <div class="result" id="result">
+    🔐 THIS WEEK'S SAFE NUMBERS
+    <span class="small">Tap SPIN THE LOCK to reveal 3 sets of 5 numbers</span>
+  </div>
+
 </section>
-<div class="note">One weekly draw • 3 rolls • 5 unique numbers per roll</div>
+
+<div class="note">
+  One weekly draw • 3 sets • 5 unique numbers per set • Numbers 1–50
+</div>
+
 </main>
+
 <script>
-const rolls=document.getElementById('rolls'), btn=document.getElementById('spin'), result=document.getElementById('result');
-const cells=[];
-for(let r=0;r<3;r++){
- const box=document.createElement('div'); box.className='roll';
- const title=document.createElement('div'); title.className='roll-title'; title.textContent='🔐 ROLL '+(r+1);
- const grid=document.createElement('div'); grid.className='nums';
- cells[r]=[];
- for(let i=0;i<5;i++){const c=document.createElement('div');c.className='num';c.textContent='?';grid.appendChild(c);cells[r].push(c)}
- box.append(title,grid); rolls.appendChild(box);
-}
-function r50(){return Math.floor(Math.random()*50)+1}
-function five(){const s=new Set();while(s.size<5)s.add(r50());return [...s]}
-let timer;
-btn.addEventListener('click',()=>{
- btn.disabled=true; btn.textContent='🔐 SPINNING…'; result.style.display='none';
- cells.flat().forEach(c=>c.classList.add('spin'));
- timer=setInterval(()=>cells.forEach(row=>five().forEach((n,i)=>row[i].textContent=String(n).padStart(2,'0'))),75);
- setTimeout(()=>{
-  clearInterval(timer);
-  const final=[five(),five(),five()];
-  final.forEach((nums,r)=>nums.forEach((n,i)=>{cells[r][i].textContent=String(n).padStart(2,'0');cells[r][i].classList.remove('spin')}));
-  result.innerHTML='🔐 THIS WEEK’S SAFE NUMBERS<br><span style="font-size:15px;font-weight:700">Check your sets of 3 numbers!</span>';
-  result.style.display='block'; btn.disabled=false; btn.textContent='🔐 SPIN AGAIN 🔐';
- },2200);
-});
+(function () {
+  const button = document.getElementById("spinButton");
+  const boxes = Array.from(document.querySelectorAll(".num"));
+  let spinning = false;
+
+  function randomNumber() {
+    return Math.floor(Math.random() * 50) + 1;
+  }
+
+  function makeSet() {
+    const numbers = [];
+
+    while (numbers.length < 5) {
+      const n = randomNumber();
+      if (!numbers.includes(n)) {
+        numbers.push(n);
+      }
+    }
+
+    return numbers;
+  }
+
+  function showNumber(box, number) {
+    box.textContent = String(number).padStart(2, "0");
+  }
+
+  function spin() {
+    if (spinning) return;
+
+    spinning = true;
+    button.disabled = true;
+    button.textContent = "🔐 SPINNING... 🔐";
+
+    boxes.forEach(box => box.classList.add("spinning"));
+
+    const animation = setInterval(function () {
+      boxes.forEach(function (box) {
+        showNumber(box, randomNumber());
+      });
+    }, 90);
+
+    setTimeout(function () {
+      clearInterval(animation);
+
+      for (let set = 0; set < 3; set++) {
+        const numbers = makeSet();
+
+        for (let i = 0; i < 5; i++) {
+          const box = boxes[(set * 5) + i];
+          showNumber(box, numbers[i]);
+          box.classList.remove("spinning");
+        }
+      }
+
+      button.textContent = "🔐 SPIN AGAIN 🔐";
+      button.disabled = false;
+      spinning = false;
+    }, 2200);
+  }
+
+  button.addEventListener("click", spin);
+  button.addEventListener("touchend", function (event) {
+    event.preventDefault();
+    spin();
+  }, { passive: false });
+})();
 </script>
+
 </body>
 </html>
