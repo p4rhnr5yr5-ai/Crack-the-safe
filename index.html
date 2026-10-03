@@ -6,373 +6,435 @@
 <title>Crack the Safe – Autumn Live Draw</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #542714;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #fff4cf;
   background:
-    radial-gradient(circle at 15% 10%, #ffd27a 0 5%, transparent 22%),
-    radial-gradient(circle at 85% 20%, #f7a83d 0 4%, transparent 20%),
-    linear-gradient(#7c250d, #d95b0b 35%, #f39b24 72%, #6d220c);
+    radial-gradient(circle at 10% 10%, #ff9d19 0 4%, transparent 18%),
+    radial-gradient(circle at 90% 18%, #c9400e 0 5%, transparent 20%),
+    linear-gradient(180deg, #421208, #7b2108 35%, #3b0d05);
 }
 
-.wrap {
-  max-width: 950px;
+.game {
+  width: min(980px, 100%);
   margin: auto;
-  padding: 22px 16px 45px;
-}
-
-.autumn-top {
-  text-align: center;
-  font-size: 34px;
-  letter-spacing: 5px;
-  margin-bottom: 4px;
-}
-
-h1 {
-  margin: 4px 0 2px;
-  text-align: center;
-  font-size: clamp(42px, 8vw, 72px);
-  color: #fff1bd;
-  text-shadow:
-    0 3px 0 #8c2e0b,
-    0 0 12px #ffb126;
-}
-
-.sub {
-  text-align: center;
-  color: #fff0c2;
-  font-weight: 900;
-  font-size: 18px;
-  margin-bottom: 22px;
-}
-
-.machine {
+  padding: 18px 14px 40px;
   position: relative;
   overflow: hidden;
-  padding: 22px;
-  border-radius: 30px;
-  border: 5px solid #4b210d;
-  background:
-    linear-gradient(145deg, #6f2a0c, #a8460c 42%, #5c210b);
-  box-shadow:
-    inset 0 0 0 4px #e89b2e,
-    inset 0 0 25px #2b1008,
-    0 10px 30px rgba(52,18,4,.45);
 }
 
-.machine::before,
-.machine::after {
-  position: absolute;
-  font-size: 70px;
-  opacity: .95;
-  pointer-events: none;
-}
+/* AUTUMN DECORATIONS */
 
-.machine::before {
-  content: "🍂";
-  left: -10px;
-  top: -12px;
-  transform: rotate(-25deg);
-}
-
-.machine::after {
-  content: "🍁";
-  right: -6px;
-  top: -8px;
-  transform: rotate(22deg);
-}
-
-.safe-title {
+.leaves {
   text-align: center;
-  color: #ffe6a0;
-  font-weight: 900;
-  font-size: 22px;
-  margin: 4px 0 16px;
+  font-size: clamp(28px, 5vw, 48px);
+  letter-spacing: 4px;
+  filter: drop-shadow(0 3px 3px #421000);
 }
 
-.lock-panel {
-  padding: 18px 14px;
-  border: 4px solid #d7831f;
-  border-radius: 22px;
-  background:
-    linear-gradient(#3d2419, #241711);
-  box-shadow:
-    inset 0 0 18px #000,
-    0 5px 0 #35150a;
+.title {
+  text-align: center;
+  margin: 4px 0 3px;
+  font-size: clamp(43px, 8vw, 82px);
+  line-height: .95;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffd968;
+  text-shadow:
+    0 3px 0 #9b2707,
+    0 6px 0 #4d1205,
+    0 0 15px #ff9d18;
 }
+
+.subtitle {
+  margin: 14px auto 22px;
+  width: fit-content;
+  max-width: 96%;
+  padding: 8px 16px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(14px, 2.6vw, 21px);
+  color: #fff0ae;
+  background: linear-gradient(#8c2608, #561304);
+  border: 2px solid #f7ad28;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px #260600;
+}
+
+/* SAFE */
+
+.safe {
+  position: relative;
+  padding: clamp(13px, 3vw, 28px);
+  border: 6px solid #b66b13;
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.14), transparent 25%),
+    linear-gradient(145deg, #7e4a19, #c9872b 25%, #6d3511 58%, #a96117);
+  box-shadow:
+    inset 0 0 0 4px #3c1b09,
+    inset 0 0 25px #291004,
+    0 10px 25px #250700;
+}
+
+.safe::before,
+.safe::after {
+  content: "●";
+  position: absolute;
+  top: 7px;
+  color: #ffd469;
+  text-shadow: 0 2px #512000;
+  font-size: 22px;
+}
+
+.safe::before { left: 14px; }
+.safe::after { right: 14px; }
+
+.safe-label {
+  text-align: center;
+  color: #ffdf76;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 13px;
+  text-shadow: 0 2px #481200;
+}
+
+/* FIVE LOCK REELS */
 
 .reels {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: clamp(6px, 1.4vw, 14px);
+  padding: clamp(9px, 2vw, 18px);
+  border: 4px solid #3a1807;
+  border-radius: 22px;
+  background: linear-gradient(#3c1b0c, #1f0c05);
+  box-shadow:
+    inset 0 0 20px #000,
+    0 3px 0 #f1a52b;
 }
 
 .reel {
-  position: relative;
-  height: 145px;
+  min-width: 0;
+  height: clamp(150px, 25vw, 240px);
+  border: 4px solid #d48b23;
+  border-radius: 18px;
   overflow: hidden;
-  border: 5px solid #a95410;
-  border-radius: 22px;
-  background:
-    linear-gradient(90deg,#211611,#5b3a23 48%,#211611);
-  box-shadow:
-    inset 0 0 0 3px #e69a27,
-    inset 0 0 25px #000,
-    0 5px 6px #160a05;
-}
-
-.reel::before {
-  content: "🔒";
-  position: absolute;
-  z-index: 4;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 25px;
-}
-
-.window {
-  position: absolute;
-  top: 42px;
-  left: 9px;
-  right: 9px;
-  bottom: 12px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  color: #fff4c9;
-  background: linear-gradient(#120c09,#3a2519,#120c09);
-  font-size: clamp(31px,6vw,53px);
-  font-weight: 900;
-  text-shadow: 0 2px 5px #000;
+  background:
+    linear-gradient(
+      180deg,
+      #9b641d 0%,
+      #e2a63d 12%,
+      #342318 26%,
+      #130e0b 50%,
+      #342318 74%,
+      #e2a63d 88%,
+      #825014 100%
+    );
   box-shadow:
-    inset 0 10px 16px #000,
-    inset 0 -10px 16px #000;
+    inset 0 0 12px #000,
+    0 0 8px #ff9d14;
 }
 
-.reel.spinning .window {
-  animation: reelShake .09s linear infinite;
+.reel::before {
+  content: "🔐";
+  position: absolute;
+  top: 9px;
+  font-size: clamp(18px, 4vw, 34px);
+}
+
+.reel::after {
+  content: "▼";
+  position: absolute;
+  bottom: 6px;
+  color: #ffb72d;
+  font-size: clamp(15px, 3vw, 28px);
+}
+
+.reel-number {
+  width: 100%;
+  padding: 18px 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(30px, 7vw, 68px);
+  color: #fff1bd;
+  background: linear-gradient(#17110e, #2e211b, #110c0a);
+  border-top: 2px solid #a76a1e;
+  border-bottom: 2px solid #a76a1e;
+  text-shadow: 0 3px 5px #000;
+}
+
+.reel.spinning .reel-number {
+  animation: reelShake .08s linear infinite;
+  filter: blur(1px);
 }
 
 @keyframes reelShake {
-  0%   { transform: translateY(-7px); filter: blur(1px); }
-  50%  { transform: translateY(7px); }
-  100% { transform: translateY(-7px); filter: blur(1px); }
+  0%   { transform: translateY(-5px); }
+  50%  { transform: translateY(5px); }
+  100% { transform: translateY(-5px); }
 }
 
+/* BUTTON */
+
 .spin-button {
-  width: 100%;
-  margin-top: 18px;
-  min-height: 78px;
-  border: 4px solid #6f250b;
+  display: block;
+  width: 94%;
+  margin: 22px auto 8px;
+  padding: clamp(16px, 3vw, 25px) 10px;
+  border: 4px solid #ffba37;
   border-radius: 24px;
-  font-size: clamp(24px,5vw,39px);
+  background: linear-gradient(#ff701c, #b52b09);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: clamp(23px, 5vw, 46px);
   font-weight: 900;
-  color: #fff7d4;
-  background:
-    linear-gradient(#ff9b22,#df4a0b 55%,#9f2607);
-  text-shadow: 0 2px 3px #702007;
+  cursor: pointer;
   box-shadow:
-    inset 0 3px 0 #ffd66c,
-    0 7px 0 #651e09,
-    0 10px 15px rgba(0,0,0,.35);
+    inset 0 3px 0 rgba(255,255,255,.25),
+    0 7px 0 #6b1807,
+    0 10px 20px #2c0802;
+  text-shadow: 0 3px 3px #6a1705;
+  touch-action: manipulation;
 }
 
 .spin-button:active {
-  transform: translateY(5px);
+  transform: translateY(4px);
   box-shadow:
-    inset 0 3px 0 #ffd66c,
-    0 2px 0 #651e09;
+    inset 0 3px 0 rgba(255,255,255,.2),
+    0 3px 0 #6b1807;
 }
 
 .spin-button:disabled {
   opacity: .8;
 }
 
-.sets {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+/* RESULTS */
+
+.results {
+  margin-top: 22px;
 }
 
 .set {
-  padding: 14px 9px 16px;
-  border: 3px solid #e89422;
-  border-radius: 17px;
-  background: linear-gradient(#5e200c,#32150c);
-  box-shadow: inset 0 0 10px #160905;
-}
-
-.set:nth-child(2) {
-  background: linear-gradient(#78300c,#3c1709);
-}
-
-.set:nth-child(3) {
-  background: linear-gradient(#5b3511,#291708);
-}
-
-.set-title {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 900;
-  color: #ffd77b;
-  margin-bottom: 10px;
-}
-
-.set-numbers {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
+  grid-template-columns: minmax(105px, 1.2fr) repeat(5, 1fr);
+  gap: clamp(5px, 1.4vw, 12px);
+  align-items: center;
+  padding: 11px;
+  margin: 12px 0;
+  border: 3px solid #d67e17;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, #461006, #6d1907 50%, #401005);
+  box-shadow:
+    inset 0 0 12px #210500,
+    0 5px 9px rgba(0,0,0,.35);
 }
 
-.ball {
+.set-name {
+  padding: 13px 5px;
+  text-align: center;
+  border-radius: 12px;
+  color: #651806;
+  background: linear-gradient(#ffe8a1, #eebc53);
+  border: 2px solid #ffb329;
+  font-weight: 900;
+  font-size: clamp(14px, 3vw, 25px);
+  white-space: nowrap;
+}
+
+.result-number {
   aspect-ratio: 1;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border: 3px solid #d99027;
-  background: #21130d;
-  color: #fff1b6;
+  align-items: center;
+  min-width: 0;
+  background: radial-gradient(circle at 35% 25%, #39271e, #100b08 72%);
+  border: 3px solid #e99521;
+  color: #fff1bd;
+  font-family: Arial, sans-serif;
+  font-size: clamp(18px, 4vw, 38px);
   font-weight: 900;
-  font-size: clamp(13px,3vw,21px);
-  box-shadow: inset 0 0 8px #000;
+  box-shadow:
+    inset 0 0 9px #000,
+    0 0 6px #f18412;
 }
 
-.instructions {
-  margin-top: 20px;
-  padding: 14px;
+/* FOOTER */
+
+.weekly {
+  margin: 20px auto 0;
+  padding: 16px 10px;
   text-align: center;
-  border-radius: 16px;
-  background: #fff0bd;
-  border: 3px solid #b65a12;
-  color: #60280d;
-  font-weight: 800;
-  line-height: 1.45;
+  color: #651806;
+  background: linear-gradient(#fff0b4, #eebf62);
+  border: 3px solid #d78117;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px #310900;
 }
 
-.pumpkins {
+.weekly strong {
+  display: block;
+  font-size: clamp(18px, 4vw, 31px);
+  margin-bottom: 5px;
+}
+
+.weekly span {
+  font-family: Arial, sans-serif;
+  font-size: clamp(12px, 2.4vw, 18px);
+  font-weight: 700;
+}
+
+.bottom-leaves {
+  margin-top: 15px;
   text-align: center;
-  font-size: 34px;
-  margin-top: 14px;
+  font-size: clamp(25px, 5vw, 44px);
+  letter-spacing: 5px;
 }
 
-@media (max-width: 600px) {
-  .machine { padding: 13px; }
-  .lock-panel { padding: 12px 8px; }
-  .reels { gap: 5px; }
+.note {
+  text-align: center;
+  margin-top: 9px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #ffd992;
+}
+
+/* IPAD / SMALL SCREEN */
+
+@media (max-width: 620px) {
+  .game {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .safe {
+    padding: 9px;
+    border-width: 4px;
+  }
+
+  .reels {
+    gap: 4px;
+    padding: 6px;
+  }
+
   .reel {
-    height: 115px;
-    border-width: 3px;
-    border-radius: 14px;
+    border-width: 2px;
+    border-radius: 11px;
   }
-  .window {
-    top: 35px;
-    left: 5px;
-    right: 5px;
+
+  .set {
+    grid-template-columns: 78px repeat(5, 1fr);
+    gap: 4px;
+    padding: 7px;
   }
-  .reel::before { font-size: 20px; }
-  .sets { gap: 5px; }
-  .set { padding: 10px 4px; }
-  .ball { border-width: 2px; }
+
+  .result-number {
+    border-width: 2px;
+  }
+
+  .set-name {
+    white-space: normal;
+  }
 }
 </style>
 </head>
 
 <body>
-<main class="wrap">
 
-  <div class="autumn-top">🍁 🍂 🔐 🍂 🍁</div>
+<main class="game">
 
-  <h1>CRACK THE SAFE</h1>
+  <div class="leaves">🍁 🔐 🍂 🎃 🍁</div>
 
-  <div class="sub">
-    AUTUMN LIVE GAME • NUMBERS 1–50
+  <h1 class="title">CRACK THE SAFE</h1>
+
+  <div class="subtitle">
+    AUTUMN WEEKLY LIVE DRAW • NUMBERS 1–50
   </div>
 
-  <section class="machine">
+  <section class="safe">
 
-    <div class="safe-title">
-      🔐 WILL YOU CRACK THE SAFE? 🔐
+    <div class="safe-label">🔐 THE SAFE 🔐</div>
+
+    <div class="reels">
+      <div class="reel"><div class="reel-number">--</div></div>
+      <div class="reel"><div class="reel-number">--</div></div>
+      <div class="reel"><div class="reel-number">--</div></div>
+      <div class="reel"><div class="reel-number">--</div></div>
+      <div class="reel"><div class="reel-number">--</div></div>
     </div>
 
-    <div class="lock-panel">
-      <div class="reels">
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-      </div>
-    </div>
-
-    <button id="spin" class="spin-button">
+    <button id="spinButton" class="spin-button">
       🔐 SPIN THE LOCK 🔐
     </button>
 
-    <div class="sets">
+  </section>
 
-      <div class="set">
-        <div class="set-title">🍁 SET 1 🍁</div>
-        <div class="set-numbers">
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-        </div>
-      </div>
+  <section class="results">
 
-      <div class="set">
-        <div class="set-title">🍂 SET 2 🍂</div>
-        <div class="set-numbers">
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-        </div>
-      </div>
-
-      <div class="set">
-        <div class="set-title">🎃 SET 3 🎃</div>
-        <div class="set-numbers">
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-        </div>
-      </div>
-
+    <div class="set">
+      <div class="set-name">🍁 SET 1</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
     </div>
 
-    <div class="instructions">
-      Members choose <strong>3 numbers from 1–50</strong><br>
-      Tap <strong>SPIN THE LOCK</strong> to reveal
-      <strong>3 sets of 5 numbers</strong>.
+    <div class="set">
+      <div class="set-name">🍂 SET 2</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
     </div>
 
-    <div class="pumpkins">
-      🎃 🍁 🍂 🎃 🍂 🍁 🎃
+    <div class="set">
+      <div class="set-name">🎃 SET 3</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
+      <div class="result-number">--</div>
     </div>
 
   </section>
+
+  <div class="weekly">
+    <strong>🔐 THIS WEEK'S SAFE NUMBERS</strong>
+    <span>Tap SPIN THE LOCK to reveal 3 sets of 5 numbers</span>
+  </div>
+
+  <div class="bottom-leaves">🎃 🍁 🍂 🍁 🎃</div>
+
+  <div class="note">
+    One weekly draw • 3 sets • 5 unique numbers per set • Numbers 1–50
+  </div>
+
 </main>
 
 <script>
 (function () {
 
-  const button = document.getElementById("spin");
+  const button = document.getElementById("spinButton");
   const reels = Array.from(document.querySelectorAll(".reel"));
-  const windows = Array.from(document.querySelectorAll(".window"));
-  const balls = Array.from(document.querySelectorAll(".ball"));
+  const reelNumbers = Array.from(document.querySelectorAll(".reel-number"));
+  const resultNumbers = Array.from(document.querySelectorAll(".result-number"));
 
   let spinning = false;
 
@@ -380,27 +442,46 @@ h1 {
     return Math.floor(Math.random() * 50) + 1;
   }
 
-  function display(n) {
-    return String(n).padStart(2, "0");
+  function displayNumber(number) {
+    return String(number).padStart(2, "0");
   }
 
   function makeUniqueSet() {
-    const result = [];
+    const numbers = [];
 
-    while (result.length < 5) {
-      const n = randomNumber();
+    while (numbers.length < 5) {
+      const number = randomNumber();
 
-      if (!result.includes(n)) {
-        result.push(n);
+      if (!numbers.includes(number)) {
+        numbers.push(number);
       }
     }
 
-    return result;
+    return numbers;
   }
 
   function randomiseReels() {
-    windows.forEach(function (windowBox) {
-      windowBox.textContent = display(randomNumber());
+    reelNumbers.forEach(function (reel) {
+      reel.textContent = displayNumber(randomNumber());
+    });
+  }
+
+  function clearResults() {
+    resultNumbers.forEach(function (box) {
+      box.textContent = "--";
+    });
+  }
+
+  function showSet(setIndex, numbers) {
+
+    numbers.forEach(function (number, index) {
+
+      const reel = reelNumbers[index];
+      const resultBox = resultNumbers[(setIndex * 5) + index];
+
+      reel.textContent = displayNumber(number);
+      resultBox.textContent = displayNumber(number);
+
     });
   }
 
@@ -412,9 +493,7 @@ h1 {
     button.disabled = true;
     button.textContent = "🔐 CRACKING THE SAFE... 🔐";
 
-    balls.forEach(function (ball) {
-      ball.textContent = "?";
-    });
+    clearResults();
 
     reels.forEach(function (reel) {
       reel.classList.add("spinning");
@@ -426,575 +505,30 @@ h1 {
 
       clearInterval(animation);
 
-      const allSets = [
-        makeUniqueSet(),
-        makeUniqueSet(),
-        makeUniqueSet()
-      ];
+      const set1 = makeUniqueSet();
+      showSet(0, set1);
 
-      let ballIndex = 0;
+      setTimeout(function () {
 
-      function revealSet(setIndex) {
+        const set2 = makeUniqueSet();
+        showSet(1, set2);
 
-        const numbers = allSets[setIndex];
+        setTimeout(function () {
 
-        let reelIndex = 0;
+          const set3 = makeUniqueSet();
+          showSet(2, set3);
 
-        const reelTimer = setInterval(function () {
+          reels.forEach(function (reel) {
+            reel.classList.remove("spinning");
+          });
 
-          windows[reelIndex].textContent =
-            display(numbers[reelIndex]);
+          button.textContent = "🔐 SPIN AGAIN 🔐";
+          button.disabled = false;
+          spinning = false;
 
-          reels[reelIndex].classList.remove("spinning");
+        }, 800);
 
-          balls[ballIndex].textContent =
-            display(numbers[reelIndex]);
-
-          reelIndex++;
-          ballIndex++;
-
-          if (reelIndex === 5) {
-
-            clearInterval(reelTimer);
-
-            if (setIndex < 2) {
-
-              setTimeout(function () {
-
-                reels.forEach(function (reel) {
-                  reel.classList.add("spinning");
-                });
-
-                const miniSpin =
-                  setInterval(randomiseReels, 70);
-
-                setTimeout(function () {
-                  clearInterval(miniSpin);
-                  revealSet(setIndex + 1);
-                }, 700);
-
-              }, 400);
-
-            } else {
-
-              button.textContent =
-                "🔐 SPIN AGAIN 🔐";
-
-              button.disabled = false;
-              spinning = false;
-            }
-          }
-
-        }, 300);
-      }
-
-      revealSet(0);
-
-    }, 1400);
-  }
-
-  button.addEventListener("click", spin);
-
-  button.addEventListener("touchend", function (event) {
-    event.preventDefault();
-    spin();
-  }, { passive: false });
-
-})();
-</script>
-
-</body>
-</html>!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Crack the Safe – Autumn Live Draw</title>
-
-<style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #542714;
-  background:
-    radial-gradient(circle at 15% 10%, #ffd27a 0 5%, transparent 22%),
-    radial-gradient(circle at 85% 20%, #f7a83d 0 4%, transparent 20%),
-    linear-gradient(#7c250d, #d95b0b 35%, #f39b24 72%, #6d220c);
-}
-
-.wrap {
-  max-width: 950px;
-  margin: auto;
-  padding: 22px 16px 45px;
-}
-
-.autumn-top {
-  text-align: center;
-  font-size: 34px;
-  letter-spacing: 5px;
-  margin-bottom: 4px;
-}
-
-h1 {
-  margin: 4px 0 2px;
-  text-align: center;
-  font-size: clamp(42px, 8vw, 72px);
-  color: #fff1bd;
-  text-shadow:
-    0 3px 0 #8c2e0b,
-    0 0 12px #ffb126;
-}
-
-.sub {
-  text-align: center;
-  color: #fff0c2;
-  font-weight: 900;
-  font-size: 18px;
-  margin-bottom: 22px;
-}
-
-.machine {
-  position: relative;
-  overflow: hidden;
-  padding: 22px;
-  border-radius: 30px;
-  border: 5px solid #4b210d;
-  background:
-    linear-gradient(145deg, #6f2a0c, #a8460c 42%, #5c210b);
-  box-shadow:
-    inset 0 0 0 4px #e89b2e,
-    inset 0 0 25px #2b1008,
-    0 10px 30px rgba(52,18,4,.45);
-}
-
-.machine::before,
-.machine::after {
-  position: absolute;
-  font-size: 70px;
-  opacity: .95;
-  pointer-events: none;
-}
-
-.machine::before {
-  content: "🍂";
-  left: -10px;
-  top: -12px;
-  transform: rotate(-25deg);
-}
-
-.machine::after {
-  content: "🍁";
-  right: -6px;
-  top: -8px;
-  transform: rotate(22deg);
-}
-
-.safe-title {
-  text-align: center;
-  color: #ffe6a0;
-  font-weight: 900;
-  font-size: 22px;
-  margin: 4px 0 16px;
-}
-
-.lock-panel {
-  padding: 18px 14px;
-  border: 4px solid #d7831f;
-  border-radius: 22px;
-  background:
-    linear-gradient(#3d2419, #241711);
-  box-shadow:
-    inset 0 0 18px #000,
-    0 5px 0 #35150a;
-}
-
-.reels {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-}
-
-.reel {
-  position: relative;
-  height: 145px;
-  overflow: hidden;
-  border: 5px solid #a95410;
-  border-radius: 22px;
-  background:
-    linear-gradient(90deg,#211611,#5b3a23 48%,#211611);
-  box-shadow:
-    inset 0 0 0 3px #e69a27,
-    inset 0 0 25px #000,
-    0 5px 6px #160a05;
-}
-
-.reel::before {
-  content: "🔒";
-  position: absolute;
-  z-index: 4;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 25px;
-}
-
-.window {
-  position: absolute;
-  top: 42px;
-  left: 9px;
-  right: 9px;
-  bottom: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  color: #fff4c9;
-  background: linear-gradient(#120c09,#3a2519,#120c09);
-  font-size: clamp(31px,6vw,53px);
-  font-weight: 900;
-  text-shadow: 0 2px 5px #000;
-  box-shadow:
-    inset 0 10px 16px #000,
-    inset 0 -10px 16px #000;
-}
-
-.reel.spinning .window {
-  animation: reelShake .09s linear infinite;
-}
-
-@keyframes reelShake {
-  0%   { transform: translateY(-7px); filter: blur(1px); }
-  50%  { transform: translateY(7px); }
-  100% { transform: translateY(-7px); filter: blur(1px); }
-}
-
-.spin-button {
-  width: 100%;
-  margin-top: 18px;
-  min-height: 78px;
-  border: 4px solid #6f250b;
-  border-radius: 24px;
-  font-size: clamp(24px,5vw,39px);
-  font-weight: 900;
-  color: #fff7d4;
-  background:
-    linear-gradient(#ff9b22,#df4a0b 55%,#9f2607);
-  text-shadow: 0 2px 3px #702007;
-  box-shadow:
-    inset 0 3px 0 #ffd66c,
-    0 7px 0 #651e09,
-    0 10px 15px rgba(0,0,0,.35);
-}
-
-.spin-button:active {
-  transform: translateY(5px);
-  box-shadow:
-    inset 0 3px 0 #ffd66c,
-    0 2px 0 #651e09;
-}
-
-.spin-button:disabled {
-  opacity: .8;
-}
-
-.sets {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.set {
-  padding: 14px 9px 16px;
-  border: 3px solid #e89422;
-  border-radius: 17px;
-  background: linear-gradient(#5e200c,#32150c);
-  box-shadow: inset 0 0 10px #160905;
-}
-
-.set:nth-child(2) {
-  background: linear-gradient(#78300c,#3c1709);
-}
-
-.set:nth-child(3) {
-  background: linear-gradient(#5b3511,#291708);
-}
-
-.set-title {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 900;
-  color: #ffd77b;
-  margin-bottom: 10px;
-}
-
-.set-numbers {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-}
-
-.ball {
-  aspect-ratio: 1;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid #d99027;
-  background: #21130d;
-  color: #fff1b6;
-  font-weight: 900;
-  font-size: clamp(13px,3vw,21px);
-  box-shadow: inset 0 0 8px #000;
-}
-
-.instructions {
-  margin-top: 20px;
-  padding: 14px;
-  text-align: center;
-  border-radius: 16px;
-  background: #fff0bd;
-  border: 3px solid #b65a12;
-  color: #60280d;
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-.pumpkins {
-  text-align: center;
-  font-size: 34px;
-  margin-top: 14px;
-}
-
-@media (max-width: 600px) {
-  .machine { padding: 13px; }
-  .lock-panel { padding: 12px 8px; }
-  .reels { gap: 5px; }
-  .reel {
-    height: 115px;
-    border-width: 3px;
-    border-radius: 14px;
-  }
-  .window {
-    top: 35px;
-    left: 5px;
-    right: 5px;
-  }
-  .reel::before { font-size: 20px; }
-  .sets { gap: 5px; }
-  .set { padding: 10px 4px; }
-  .ball { border-width: 2px; }
-}
-</style>
-</head>
-
-<body>
-<main class="wrap">
-
-  <div class="autumn-top">🍁 🍂 🔐 🍂 🍁</div>
-
-  <h1>CRACK THE SAFE</h1>
-
-  <div class="sub">
-    AUTUMN LIVE GAME • NUMBERS 1–50
-  </div>
-
-  <section class="machine">
-
-    <div class="safe-title">
-      🔐 WILL YOU CRACK THE SAFE? 🔐
-    </div>
-
-    <div class="lock-panel">
-      <div class="reels">
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-        <div class="reel"><div class="window">?</div></div>
-      </div>
-    </div>
-
-    <button id="spin" class="spin-button">
-      🔐 SPIN THE LOCK 🔐
-    </button>
-
-    <div class="sets">
-
-      <div class="set">
-        <div class="set-title">🍁 SET 1 🍁</div>
-        <div class="set-numbers">
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-        </div>
-      </div>
-
-      <div class="set">
-        <div class="set-title">🍂 SET 2 🍂</div>
-        <div class="set-numbers">
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-        </div>
-      </div>
-
-      <div class="set">
-        <div class="set-title">🎃 SET 3 🎃</div>
-        <div class="set-numbers">
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-          <div class="ball">?</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="instructions">
-      Members choose <strong>3 numbers from 1–50</strong><br>
-      Tap <strong>SPIN THE LOCK</strong> to reveal
-      <strong>3 sets of 5 numbers</strong>.
-    </div>
-
-    <div class="pumpkins">
-      🎃 🍁 🍂 🎃 🍂 🍁 🎃
-    </div>
-
-  </section>
-</main>
-
-<script>
-(function () {
-
-  const button = document.getElementById("spin");
-  const reels = Array.from(document.querySelectorAll(".reel"));
-  const windows = Array.from(document.querySelectorAll(".window"));
-  const balls = Array.from(document.querySelectorAll(".ball"));
-
-  let spinning = false;
-
-  function randomNumber() {
-    return Math.floor(Math.random() * 50) + 1;
-  }
-
-  function display(n) {
-    return String(n).padStart(2, "0");
-  }
-
-  function makeUniqueSet() {
-    const result = [];
-
-    while (result.length < 5) {
-      const n = randomNumber();
-
-      if (!result.includes(n)) {
-        result.push(n);
-      }
-    }
-
-    return result;
-  }
-
-  function randomiseReels() {
-    windows.forEach(function (windowBox) {
-      windowBox.textContent = display(randomNumber());
-    });
-  }
-
-  function spin() {
-
-    if (spinning) return;
-
-    spinning = true;
-    button.disabled = true;
-    button.textContent = "🔐 CRACKING THE SAFE... 🔐";
-
-    balls.forEach(function (ball) {
-      ball.textContent = "?";
-    });
-
-    reels.forEach(function (reel) {
-      reel.classList.add("spinning");
-    });
-
-    const animation = setInterval(randomiseReels, 75);
-
-    setTimeout(function () {
-
-      clearInterval(animation);
-
-      const allSets = [
-        makeUniqueSet(),
-        makeUniqueSet(),
-        makeUniqueSet()
-      ];
-
-      let ballIndex = 0;
-
-      function revealSet(setIndex) {
-
-        const numbers = allSets[setIndex];
-
-        let reelIndex = 0;
-
-        const reelTimer = setInterval(function () {
-
-          windows[reelIndex].textContent =
-            display(numbers[reelIndex]);
-
-          reels[reelIndex].classList.remove("spinning");
-
-          balls[ballIndex].textContent =
-            display(numbers[reelIndex]);
-
-          reelIndex++;
-          ballIndex++;
-
-          if (reelIndex === 5) {
-
-            clearInterval(reelTimer);
-
-            if (setIndex < 2) {
-
-              setTimeout(function () {
-
-                reels.forEach(function (reel) {
-                  reel.classList.add("spinning");
-                });
-
-                const miniSpin =
-                  setInterval(randomiseReels, 70);
-
-                setTimeout(function () {
-                  clearInterval(miniSpin);
-                  revealSet(setIndex + 1);
-                }, 700);
-
-              }, 400);
-
-            } else {
-
-              button.textContent =
-                "🔐 SPIN AGAIN 🔐";
-
-              button.disabled = false;
-              spinning = false;
-            }
-          }
-
-        }, 300);
-      }
-
-      revealSet(0);
+      }, 800);
 
     }, 1400);
   }
